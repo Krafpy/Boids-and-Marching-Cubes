@@ -31,10 +31,10 @@ The configuration file `config.txt` is written in a simple custom markup format.
 * `P`: pause (boids);
 * `space`: generate a new terrain and new boids.
 
-## Terrain
+### Terrain
 The marching cubes algorithm is implemented with the ability to share vertices between triangles to reduce the memory cost. A smooth rendering is added by calculating interpolated normals for each vertices, used then for the default Gouraud shading performed by the GPU. A CPU floodfill is also performed on the density field to remove regions with a number of points less than `minRegionSize`. This avoids generating random small floating shapes.
 
-## Boids
+### Boids
 The boids follow the rules described by Craig Reynolds in his [original paper](https://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/) : _cohesion_, _alignment_ and _separation_, as well as obstacle avoidance by _steer to avoid_ method. The terrain detection is done by checking for a cube that intersects the surface (configuration different from 0) along a ray, in a distance range of `predicitonLength`. No triangle intersection is performed. The bounding box is also interpreted as an obstacle. Boids colors are simply a mix of the main `boidColor` defined in the configuration, and some random offset scaled by `boidColorDeviation` for each boid.
 
 ![Screenshot](screenshots/screenshot7.PNG)
