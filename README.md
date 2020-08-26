@@ -8,7 +8,7 @@ This project is inspired from Sebastian Lague's videos on [marching cubes](https
 
 ## Dependencies
 This program uses [GLFW3](https://www.glfw.org/) and [GLEW](http://glew.sourceforge.net/) libraries, and runs on OpengGL 4.6, though it only requires OpenGL 4.3 (don't forget to change the `#version` in shader sources if needed). This project was developed on the CodeBlocks IDE using the 32bit GNU GCC compiler. It should work successfully using a 64bit compiler with the right libraries/DLLs versions, but no garantee. 
-Once compiled, the compute shader source files and the `config.txt` file _must_ be in the same location as the executable.
+Once compiled, the compute shaders source files and the `config.txt` file _must_ be in the same location as the executable.
 
 ## Features
 ### Configuration
@@ -35,6 +35,6 @@ The configuration file `config.txt` is written in a simple custom markup format.
 The marching cubes algorithm is implemented with the ability to share vertices between triangles to reduce the memory cost. A smooth rendering is added by calculating interpolated normals for each vertices, used then for the default Gouraud shading performed by the GPU. A CPU floodfill is also performed on the density field to remove regions with a number of points less than `minRegionSize`. This avoids generating random small floating shapes.
 
 ### Boids
-The boids follow the rules described by Craig Reynolds in his [original paper](https://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/) : _cohesion_, _alignment_ and _separation_, as well as obstacle avoidance by _steer to avoid_ method. The terrain detection is done by checking for a cube that intersects the surface (configuration different from 0) along a ray, in a distance range of `predicitonLength`. No triangle intersection is performed. The bounding box is also interpreted as an obstacle. Boids colors are simply a mix of the main `boidColor` defined in the configuration, and some random offset scaled by `boidColorDeviation` for each boid.
+The boids follow the rules described by Craig Reynolds in his [original paper](https://www.cs.toronto.edu/~dt/siggraph97-course/cwr87/) : _cohesion_, _alignment_ and _separation_, as well as obstacle avoidance by _steer to avoid_ method. The terrain detection is done by checking for a cube that intersects the surface (configuration different from 0) along a ray, in a distance range of `predictionLength`. No triangle intersection is performed. The bounding box is also interpreted as an obstacle. Boids colors are simply a mix of the main `boidColor` defined in the configuration, and some random offset scaled by `boidColorDeviation` for each boid.
 
 ![Screenshot](screenshots/screenshot7.PNG)
